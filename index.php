@@ -64,7 +64,8 @@
                             </span> <!-- close user name-->
                             <span class="date-time">
                                 1 minute ago
-                            </span><!--close date time -->
+                            </span>
+                            <!--close date time -->
                         </div> <!-- close user-name-date -->
                         <div class="left-msg">
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro architecto nisi laudantium? Ea blanditiis soluta sed et aperiam.</p>
@@ -84,7 +85,8 @@
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro architecto nisi laudantium? Ea blanditiis soluta sed et aperiam.</p>
                         </div> <!-- close right-msg -->
                     </div><!-- close right-message-area -->
-                </div> <!--close right messages-->
+                </div>
+                <!--close right messages-->
 
                 <div class="right-messages common-margin">
                     <div class="right-msg-area">
@@ -108,8 +110,9 @@
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro architecto nisi laudantium? Ea blanditiis soluta sed et aperiam.</p>
                         </div> <!-- close right-msg -->
                     </div><!-- close right-message-area -->
-                </div><!--close right messages-->
-                
+                </div>
+                <!--close right messages-->
+
                 <div class="right-messages common-margin">
                     <div class="right-msg-area">
                         <span class="date-time right-time">
@@ -120,21 +123,26 @@
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro architecto nisi laudantium? Ea blanditiis soluta sed et aperiam.</p>
                         </div> <!-- close right-msg -->
                     </div><!-- close right-message-area -->
-                </div><!--close right messages-->
+                </div>
+                <!--close right messages-->
 
-            </div><!--end messages--->
+            </div> <!--end messages--->
+            
             <div class="chat-form">
-                <form action="">
-                    <textarea name=""></textarea>
-                    <input type="submit" value="Send">
-                </form>
-            </div>
-            <!--end chat form-->
-        </section>
-        <!--close right-area-->
-    </div>
-    <!--close chat area -->
+                <div class="chat-container">
+                    <div class="form-input">
+                        <textarea class="text-area-control" rows="" cols="" placeholder=" Type your message"></textarea>
+                    </div> <!--close form-input-->
+                    <div class="form-input">
+                        <label for="upload-files" id="upload-label"><i class="fas fa-paperclip fa-uploads"></i><i class="fas fa-file-image fa-uploads"></i></label>
+                        <input type="file" id="upload-files" class="files-upload">
+                    </div> <!-- close form-input-->
+                </div> <!--end chat-container-->
+            </div> <!--end chat-form-->
+            
+        </section><!--close right-area-->
+
+    </div><!--close chat area -->
 
 </body>
-
 </html>
