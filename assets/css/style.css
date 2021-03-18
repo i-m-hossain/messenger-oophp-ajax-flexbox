@@ -383,12 +383,12 @@ body{
 .right-messages{
     display:flex;
     justify-content:flex-end;
-    max-width:50%;
-    width: auto;
+    
 }
-/* .right-msg-area{
-       
-}  */
+.right-msg-area{
+  max-width:50%;
+  width: auto;
+} 
 .right-time{
     display:block;
     text-align: right;
@@ -424,11 +424,14 @@ body{
     height: 15vh;
     border: 1px solid var(--color-silver-3);
     background: #fff;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    
 }
 .chat-container{
     display: flex;
+}
+.text-area-scroll {
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .form-input{
@@ -517,7 +520,7 @@ body{
         width: auto;
     }
 
-    .right-messages {
+    .right-msg-area {
         margin-left: 30%;
         max-width: 100%;
         width: auto;
@@ -527,15 +530,21 @@ body{
 
     }
     .chat-form{
+        
+        height:20vh;
+    }
+    .text-area-scroll{
         overflow-x: hidden;
         overflow-y: scroll;
-        height:20vh;
     }
     #sidebar::before {
         display: none;
     }   
     .custom-bars:hover{
         cursor:pointer;
+    }
+    ::-webkit-input-placeholder{
+        font-size: .9rem;
     }
     
 }

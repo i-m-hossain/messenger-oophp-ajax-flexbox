@@ -22,33 +22,9 @@
 
     </nav>
     <div class="chat-container ">
-        <section id="sidebar">
-            <ul class="left-ul">
-                <li><a href="#"><span class="profile-img-span"><img class="profile-img" src="assets/img/pro-pic-2.jpg" alt="profile picture"></span></a></li>
-                <li><a href="#">John Smith <span class="cool-hover"></span> </a></li>
-                <li><a href="#">Change Name <span class="cool-hover"></span> </a></li>
-                <li><a href="#">Change Password <span class="cool-hover"></span> </a></li>
-                <li><a href="#">100 User <span class="cool-hover"></span> </a></li>
+        <?php include "components/sidebar.php" ?><!---close sidebar -->
 
-            </ul>
-        </section>
-        <!---close sidebar -->
-
-        <section class="right area">
-            <div class="form-section">
-                <div class="group">
-                    <h2 class="form-heading ">Change User Name</h2>
-                </div>
-                <div class="group">
-                    <input class="control" type="text" name="new-name" placeholder="Add new name">
-                </div>
-                <div>
-                    <input type="submit" class="btn signup-btn" value="Change Name">
-                </div>
-            </div>
-        </section>
-
-
+        <?php include "components/change-name.php" ?>
     </div>
 
 </body>
