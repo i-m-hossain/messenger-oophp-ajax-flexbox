@@ -62,6 +62,19 @@ if (isset($_POST['signup'])) {
         $image_error     =   "Invalid image format(only jpg and png allowed)";
         $photo_status    =   "";
     }
+
+    /**=== Submit data to the database ===**/
+    if(!empty($name_status) && !empty($email_status) && !empty($password_status) && !empty($photo_status)){
+        
+        move_uploaded_file($img_tmp, "$img_path/$img_name");
+        $status = 0;
+        $hash_password = password_hash($password, PASSWORD_BCRYPT);
+        $query = "INSERT  INTO users (name, email, password, image, status) VALUES (?,?,?,?,?)";
+        $obj->Normal_Query($query, [$full_name, $email, $hash_password, $img_name, $status ]);
+
+        echo "success";
+
+    }
 }
 
 ?>
