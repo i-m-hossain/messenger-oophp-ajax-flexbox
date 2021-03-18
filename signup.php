@@ -94,7 +94,8 @@ if (isset($_POST['signup'])) {
                         <h2 class="form-heading">CReate New Account</h2>
                     </div> <!-- close group-->
                     <div class="group">
-                        <input type="text" name="full_name" class="control" placeholder="Enter your full name">
+                        <input type="text" name="full_name" class="control" value="<?php if(isset($full_name)) : echo $full_name; endif; ?>" 
+                            placeholder="Enter your full name">
                         <div class="error name-error">
                             <?php if (isset($name_error)) : ?>
 
@@ -104,7 +105,8 @@ if (isset($_POST['signup'])) {
                         </div>
                     </div> <!-- close group-->
                     <div class="group">
-                        <input type="email" name="email" class="control" placeholder="Enter your email">
+                        <input type="email" name="email" class="control" value="<?php if(isset($email)) : echo $email; endif; ?>" 
+                            placeholder="Enter your email">
                         <div class="error email-error">
                             <?php if (isset($email_error)) : ?>
 
@@ -114,7 +116,8 @@ if (isset($_POST['signup'])) {
                         </div>
                     </div> <!-- close group-->
                     <div class="group">
-                        <input type="password" name="password" class="control" placeholder="Enter password">
+                        <input type="password" name="password" class="control" value="<?php if(isset($password)) : echo $password; endif; ?>" 
+                            placeholder="Enter password">
                         <div class="error password-error">
                             <?php if (isset($password_error)) : ?>
 
@@ -124,8 +127,8 @@ if (isset($_POST['signup'])) {
                         </div>
                     </div> <!-- close group-->
                     <div class="group">
-                        <label for="file" id="file-label"> <i class="fas fa-cloud-upload-alt upload-icon"></i> Choose image </label>
-                        <input type="file" name="img" class="file" id="file">
+                        <label for="file"  id="file-label"> <i class="fas fa-cloud-upload-alt upload-icon"></i> Choose image </label>
+                        <input type="file" name="img" class="file" id="file" >
                         <div class="error image-error">
                             <?php if (isset($image_error)) : ?>
 
