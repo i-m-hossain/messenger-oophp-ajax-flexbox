@@ -154,13 +154,35 @@ body{
 
 /**== Profile ==**/
 
+
+
 #nav {
+
     width: 100%;
     height: 10vh;
     background: linear-gradient(to right, var(--color-green-light), var(--color-green-dark));
     box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.2);
     /** x,y,blurrness, spread, rgba(r,g,b,alpha) **/
+    position: relative;
+    ;
 }
+
+/*== adding bars ---==*/
+
+.custom-bars {
+    position: absolute;
+    /* float: right; */
+    font-size: 1.8rem;
+    color: var(--color-white);
+    right: 3rem;
+    top: 33%;
+    display: block;
+}
+.bars{
+    display:none;
+}
+
+
 
 .chat-container {
     display: flex;
@@ -278,6 +300,7 @@ body{
 
 .left-message {
     display: flex;
+    width: 50%;
 }
 
 .sender-img-block {
@@ -315,8 +338,6 @@ body{
 
 .left-msg-area {
     margin-left: 2rem;
-    max-width:40%;
-    width: auto;
 }
 
 .sender-name {
@@ -362,10 +383,11 @@ body{
 .right-messages{
     display:flex;
     justify-content:flex-end;
+    max-width:50%;
+    width: auto;
 }
 .right-msg-area{
-    max-width:40%;
-    width: auto;   
+       
 } 
 .right-time{
     display:block;
@@ -399,7 +421,7 @@ body{
 /**== Chat Box ==**/
 .chat-form {
     width: 100%;
-    height: 10vh;
+    height: 15vh;
     border: 1px solid var(--color-silver-3);
     background: #fff;
 }
@@ -414,7 +436,7 @@ body{
     width: 100%;
     border:0;
     padding: 1rem 2rem;
-    height: 5rem;
+    height: 10rem;
     resize: none;
     margin-left:.5rem ;
 }
@@ -447,7 +469,14 @@ body{
     letter-spacing: 2px;
 }
 
-/**=== Emojis ===**/
+/**====Change Password ===**/
+.form-section{
+    padding: 3rem;
+}
+
+.form-section .group .control{
+    width: 100%;
+}
 
 
 
@@ -460,6 +489,7 @@ body{
     .account-right{
         width: 100%;
     }
+    
 }
 
 

@@ -11,20 +11,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;900&family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/emojionearea.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+
+
 </head>
 
 <body>
     <nav id="nav">
-
+        <span class="bars">
+            <i class="fa fa-bars custom-bars" aria-hidden="false"></i>
+        </span>
     </nav>
     <div class="chat-container">
         <section id="sidebar">
             <ul class="left-ul">
                 <li><a href="#"><span class="profile-img-span"><img class="profile-img" src="assets/img/pro-pic-2.jpg" alt="profile picture"></span></a></li>
                 <li><a href="#">John Smith <span class="cool-hover"></span> </a></li>
-                <li><a href="#">Change Name <span class="cool-hover"></span> </a></li>
-                <li><a href="#">Change Password <span class="cool-hover"></span> </a></li>
+                <li><a href="/oophp/messenger/change-name">Change Name <span class="cool-hover"></span> </a></li>
+                <li><a href="/oophp/messenger/change-password.php">Change Password <span class="cool-hover"></span> </a></li>
                 <li><a href="#">100 User <span class="cool-hover"></span> </a></li>
 
             </ul>
@@ -126,23 +132,41 @@
                 </div>
                 <!--close right messages-->
 
-            </div> <!--end messages--->
-            
+            </div>
+            <!--end messages--->
+
             <div class="chat-form">
                 <div class="chat-container">
                     <div class="form-input">
-                        <textarea class="text-area-control" rows="" cols="" placeholder=" Type your message"></textarea>
-                    </div> <!--close form-input-->
+                        <textarea class="text-area-control" id="example1" rows="5" placeholder=" Type your message"></textarea>
+                    </div>
+                    <!--close form-input-->
                     <div class="form-input">
                         <label for="upload-files" id="upload-label"><i class="fas fa-paperclip fa-uploads"></i><i class="fas fa-file-image fa-uploads"></i></label>
                         <input type="file" id="upload-files" class="files-upload">
                     </div> <!-- close form-input-->
-                </div> <!--end chat-container-->
-            </div> <!--end chat-form-->
-            
-        </section><!--close right-area-->
+                </div>
+                <!--end chat-container-->
+            </div>
+            <!--end chat-form-->
 
-    </div><!--close chat area -->
+
+        </section>
+        <!--close right-area-->
+    </div>
+    <!--close chat area -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/emojionearea.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#example1").emojioneArea({
+                pickerPosition: "bottom"
+            });
+        });
+    </script>
+
 
 </body>
+
 </html>
