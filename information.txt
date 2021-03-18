@@ -1,0 +1,18 @@
+
+
+1.XSS Attack --- Cross Side Scripting Attack
+
+    ***This happens when a hacker inputs malacious scripts into the input field
+
+    **Example:
+        # <script>document.body.style.background="red" </script>
+        # <script>window.location="https://www.google.com" </script>
+    
+    *** Solution:
+        # sanitizing input data by removing script tag and white spaces along side of the input text
+        # php library function:
+
+            trim(strip_tags($data))
+            
+
+

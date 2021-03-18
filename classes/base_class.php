@@ -15,4 +15,19 @@ class base_class extends db{
     public function Count_Rows(){
         return $this->query->rowCount();
     }
+
+    public function security($data){
+        return trim(strip_tags($data));
+    }
+
+    public function create_session($session_name, $session_value){
+        
+        $_SESSION["$session_name"] = $session_value;
+
+    }
+
+    public function single_result(){
+        return $this->query->fetch(PDO::FETCH_OBJ);
+
+    }
 }

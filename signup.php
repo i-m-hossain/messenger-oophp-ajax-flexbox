@@ -4,9 +4,9 @@ $obj = new base_class();
 
 if (isset($_POST['signup'])) {
 
-    $full_name      =   $_POST['full_name'];
-    $email          =   $_POST['email'];
-    $password       =   $_POST['password'];
+    $full_name      =   $obj->security($_POST['full_name']);
+    $email          =   $obj->security($_POST['email']);
+    $password       =   $obj->security($_POST['password']);
     $img_name       =   $_FILES['img']['name'];
     $img_tmp        =   $_FILES['img']['tmp_name'];
     $img_path       =   "assets/uploads";
@@ -72,8 +72,9 @@ if (isset($_POST['signup'])) {
         $query = "INSERT  INTO users (name, email, password, image, status) VALUES (?,?,?,?,?)";
         $obj->Normal_Query($query, [$full_name, $email, $hash_password, $img_name, $status ]);
 
-        echo "success";
-
+        //Flash message
+        $obj->create_session("account_success", "Your account is successfully created");
+        header("location:login.php");
     }
 }
 
@@ -154,7 +155,7 @@ if (isset($_POST['signup'])) {
                         <input type="submit" name="signup" class="btn signup-btn" value="Sign up">
                     </div> <!-- close group-->
                     <div class="group">
-                        <a href="login.php" class="link">Already registered? </a>
+                        <a href="login.php" class="link">Already registered? Login in instead</a>
                     </div>
 
                 </form>

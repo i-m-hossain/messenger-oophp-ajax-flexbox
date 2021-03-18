@@ -1,3 +1,9 @@
+<?php 
+    include "classes/init.php";
+    
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
