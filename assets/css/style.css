@@ -386,9 +386,9 @@ body{
     max-width:50%;
     width: auto;
 }
-.right-msg-area{
+/* .right-msg-area{
        
-} 
+}  */
 .right-time{
     display:block;
     text-align: right;
@@ -424,6 +424,8 @@ body{
     height: 15vh;
     border: 1px solid var(--color-silver-3);
     background: #fff;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 .chat-container{
     display: flex;
@@ -488,6 +490,52 @@ body{
     }
     .account-right{
         width: 100%;
+    }
+    .bars {
+        display: block;
+    }
+
+    .chat-container {
+        flex-wrap: wrap;
+    }
+
+    #sidebar {
+        width: 100%;
+        display: none;
+    }
+
+    #right-area {
+        width: 100%;
+    }
+
+    #sidebar::before {
+        width: 50%;
+    }
+
+    .left-message {
+        max-width: 100%;
+        width: auto;
+    }
+
+    .right-messages {
+        margin-left: 30%;
+        max-width: 100%;
+        width: auto;
+    }
+    .messages{
+        height: 70vh;
+
+    }
+    .chat-form{
+        overflow-x: hidden;
+        overflow-y: scroll;
+        height:20vh;
+    }
+    #sidebar::before {
+        display: none;
+    }   
+    .custom-bars:hover{
+        cursor:pointer;
     }
     
 }

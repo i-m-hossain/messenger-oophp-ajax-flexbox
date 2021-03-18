@@ -165,6 +165,13 @@
             });
         });
     </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".custom-bars").click(function() {
+                $("#sidebar").slideToggle()
+            });
+        });
+    </script>
 
 
 </body>
