@@ -483,6 +483,20 @@ body{
     width: 100%;
 }
 
+/***=== Form Error ===***/
+
+.error{
+    color: var(--color-red);
+    text-align: left;
+    font-size: 1.2rem;
+    margin-top: .6rem;
+}
+.email-error{
+
+}
+.password-error{
+
+}
 
 
 /**=== Responsive Media Queries ===**/
