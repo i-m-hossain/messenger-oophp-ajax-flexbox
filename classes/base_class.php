@@ -26,6 +26,10 @@ class base_class extends db{
 
     }
 
+    public function fetch_all(){
+        return $this->query->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function single_result(){
         return $this->query->fetch(PDO::FETCH_OBJ);
 
