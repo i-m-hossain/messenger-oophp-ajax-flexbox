@@ -54,7 +54,8 @@ if (isset($_POST['change_password'])) {
             $obj->Normal_Query($query, [$hash_password, $user_id]);
 
             //creating session for flash message
-            $obj->create_session('password_change', "Your password is changed succesfully");
+            $obj->create_session('password_updated', "Your password is succesfully updated");
+            header("location:index.php");
         }
     }
 }
@@ -80,29 +81,8 @@ if (isset($_POST['change_password'])) {
 
         <?php include "components/sidebar.php" ?>
         <!---close sidebar -->
-
         <section class="right area">
             <form class="form-section" method="POST">
-                <!-- Flash message after registration-->
-                <?php if (isset($_SESSION['password_change'])) : ?>
-                    <div class="alert alert-success">
-                        <?php echo $_SESSION['password_change']; ?>
-                    </div>
-                    <!--close alert-->
-                <?php endif; ?>
-                <?php unset($_SESSION['password_change']) ?>
-
-                <div class="flash success-flash">
-                    <span class="remove">&times</span>
-                    <div class="flash-heading">
-                        <h3><span class="checked">&#10004</span> Success: you are done!!</h3>
-                    </div>
-                    <div class="flash-body">
-                        <p>You password is successfully updated!!</p>
-                    </div>
-                </div>
-                <!--close flash-->
-
                 <div class="group">
                     <h2 class="form-heading ">Change Password</h2>
                 </div>
@@ -141,8 +121,8 @@ if (isset($_POST['change_password'])) {
 
 
     </div>
-   <script src="assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="assets/js/remove.js"> </script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/remove.js"> </script>
 </body>
 
 </html>
