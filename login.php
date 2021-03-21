@@ -35,6 +35,7 @@ if (isset($_POST['login'])) {
             $user_email     =   $row->email;
             $user_password  =   $row->password;
             $user_name      =   $row->name;
+            $user_image      =   $row->image;
 
             //if input password does not match
             if(!password_verify($password, $user_password)){
@@ -43,6 +44,7 @@ if (isset($_POST['login'])) {
                 //if input password matches with the registerd email, creating sessions
                 $obj->create_session("user_name", $user_name);
                 $obj->create_session('user_id', $user_id);
+                $obj->create_session('user_image', $user_image);
                 
                 header("location:index.php"); //redirecting to home page
 
