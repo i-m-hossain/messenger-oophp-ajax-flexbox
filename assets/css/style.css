@@ -286,7 +286,7 @@ body{
 
     width: 80%;
     height: 90vh;
-    background: #888;
+    background: var(--color-white);
 }
 
 .messages {
@@ -489,6 +489,7 @@ body{
 /**====Change Password ===**/
 .form-section{
     padding: 3rem;
+    width: 40%;
 }
 
 .form-section .group .control{
@@ -589,6 +590,40 @@ body{
     .remove:hover{
         color:var(--color-green);
         cursor: pointer
+    }
+
+    .change-img{
+        display:none;
+
+    }
+
+    /**== Cange Image==**/
+    #change-image-label{
+        width: 100%;
+        height: 4rem;
+        display:block;
+        border: 1px solid var(--color-green);
+        line-height: 4rem;
+        border-radius: .3rem;
+        position:relative;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    #change-image-label::after{
+        position: absolute;
+        content: "Choose Image";
+        right: 0;
+        top:0;
+        width: 11rem;
+        background-color: var(--color-green);
+        color: var(--color-white);
+        text-align: center;
+        font-size: 1.2rem;
+        
+
+    }
+    #change-image-label:hover{
+        cursor: pointer;
     }
     
 /**=== Responsive Media Queries ===**/

@@ -81,7 +81,7 @@ if (isset($_POST['change_password'])) {
 
         <?php include "components/sidebar.php" ?>
         <!---close sidebar -->
-        <section class="right area">
+        <section id="right-area">
             <form class="form-section" method="POST">
                 <div class="group">
                     <h2 class="form-heading ">Change Password</h2>

@@ -51,26 +51,23 @@ if (isset($_POST['change_name'])) {
         <?php include "components/sidebar.php" ?>
         <!---close sidebar -->
         <section id="right-area">
-            <form class="form-section" method="POST">
+            <form class="form-section" enctype="multipart/form-data" method="POST">
                 <div class="group">
-                    <h2 class="form-heading ">Change User Name</h2>
+                    <h2 class="form-heading ">Change Photo</h2>
                 </div>
                 <div class="group">
-                    <input class="control" type="text" name="new_name" placeholder="<?php echo $_SESSION['user_name'] ?>">
-                    <div class="error">
-                        <?php if (isset($name_error)) : echo $name_error;
-                        endif; ?>
-                    </div>
+                    <label for="change-image" id="change-image-label"></label>
+                    <input type="file" name="change-image" id="change-image" class="change-img">
                 </div>
-
 
                 <div>
-                    <input type="submit" name="change_name" class="btn signup-btn" value="Change Name">
+                    <input type="submit" name="change_img" class="btn signup-btn" value="Save changes">
                 </div>
             </form>
         </section>
     </div>
 
+    <?php include "components/js.php" ?>
 </body>
 
 </html>
