@@ -2,6 +2,11 @@
 include "classes/init.php";
 $obj = new base_class();
 
+if (isset($_SESSION['user_id'])) {
+
+    header("location:index.php");
+}
+
 if (isset($_POST['signup'])) {
 
     $full_name      =   $obj->security($_POST['full_name']);

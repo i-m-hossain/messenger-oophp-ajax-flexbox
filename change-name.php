@@ -1,5 +1,6 @@
 <?php
 include "classes/init.php";
+include "security.php"; //prevents anauthenticated user
 $obj = new base_class();
 
 if (isset($_POST['change_name'])) {
@@ -8,7 +9,6 @@ if (isset($_POST['change_name'])) {
     //validation
     if (empty($new_name)) {
         $name_error = "Name field is required";
-        $name_status = "";
     }else{
         $query = "UPDATE users SET name=? WHERE id=?";
         $obj->Normal_Query($query, [$new_name, $_SESSION['user_id']]);

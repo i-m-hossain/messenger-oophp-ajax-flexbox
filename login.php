@@ -1,5 +1,9 @@
 <?php
 include "classes/init.php";
+if (isset($_SESSION['user_id'])) {
+
+    header("location:index.php");
+}
 
 $obj = new base_class();
 if (isset($_POST['login'])) {
@@ -19,39 +23,41 @@ if (isset($_POST['login'])) {
     }
 
     //Fetching user data
-    if(!empty($email_status) && !empty($password_status)){
+    if (!empty($email_status) && !empty($password_status)) {
 
         //fetching user having the input email
         $query = "SELECT * FROM users WHERE email= ?";
         $obj->Normal_Query($query, array($email));
 
         //if it does not exist
-        if($obj->Count_Rows() == 0){
+        if ($obj->Count_Rows() == 0) {
             $email_error = "Please enter correct email";
-        }else{
+        } else {
             //if it exists
             $row            =   $obj->single_result(); //retrieves only single result and returns objects
             $user_id        =   $row->id;
             $user_email     =   $row->email;
             $user_password  =   $row->password;
             $user_name      =   $row->name;
-            $user_image      =   $row->image;
+            $user_image      =  $row->image;
 
             //if input password does not match
-            if(!password_verify($password, $user_password)){
+            if (!password_verify($password, $user_password)) {
                 $password_error = "Please Enter correct Password";
-            }else{
-                //if input password matches with the registerd email, creating sessions
+            } else {
+                //if input password matches with the registerd email, creating sessions and Updating user status to 1 
+                $status = 1;
+                $query = "UPDATE users SET status=? WHERE id=?";
+                $obj->Normal_Query($query, [$status, $user_id]);
                 $obj->create_session("user_name", $user_name);
                 $obj->create_session('user_id', $user_id);
                 $obj->create_session('user_image', $user_image);
-                
+
                 header("location:index.php"); //redirecting to home page
 
             }
         }
     }
-    
 }
 
 ?>
@@ -69,6 +75,18 @@ if (isset($_POST['login'])) {
 
 <body>
 
+    <?php if (isset($_SESSION['security'])) : ?>
+        <div class="flash error-flash">
+            <span class="remove">&times</span>
+            <div class="flash-heading">
+                <h3><span class="cross">&#x2715</span> Error!</h3>
+            </div>
+            <div class="flash-body">
+                <p><?php echo $_SESSION['security']; ?></p>
+            </div>
+        </div>
+    <?php endif; ?>
+    <?php unset($_SESSION['security']); ?>
     <div class="signup-container">
         <div class="account-left">
             <div class="account-text">
@@ -96,7 +114,8 @@ if (isset($_POST['login'])) {
                         <h2 class="form-heading">User Login</h2>
                     </div> <!-- close group-->
                     <div class="group">
-                        <input type="email" name="email" value="<?php if(isset($email)) : echo $email; endif; ?>" class="control" placeholder="Enter your email">
+                        <input type="email" name="email" value="<?php if (isset($email)) : echo $email;
+                                                                endif; ?>" class="control" placeholder="Enter your email">
                         <div class="error email-error">
                             <?php if (isset($email_error)) : ?>
 
@@ -106,7 +125,8 @@ if (isset($_POST['login'])) {
                         </div>
                     </div> <!-- close group-->
                     <div class="group">
-                        <input type="password" name="password" value="<?php if(isset($password)) : echo $password; endif; ?>" class="control" placeholder="Enter password">
+                        <input type="password" name="password" value="<?php if (isset($password)) : echo $password;
+                                                                        endif; ?>" class="control" placeholder="Enter password">
                         <div class="error password-error">
                             <?php if (isset($password_error)) : ?>
 
@@ -133,6 +153,7 @@ if (isset($_POST['login'])) {
 
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/file_lable.js"></script>
+    <script type="text/javascript" src="assets/js/remove.js"></script>
 </body>
 
 </html>

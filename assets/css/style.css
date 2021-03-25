@@ -597,7 +597,7 @@ body{
 
     }
 
-    /**== Cange Image==**/
+    /**== Change Image==**/
     #change-image-label{
         width: 100%;
         height: 4rem;
@@ -608,6 +608,7 @@ body{
         position:relative;
         padding-left: 1rem;
         padding-right: 1rem;
+        overflow: hidden;
     }
     #change-image-label::after{
         position: absolute;
@@ -619,6 +620,7 @@ body{
         color: var(--color-white);
         text-align: center;
         font-size: 1.2rem;
+
         
 
     }

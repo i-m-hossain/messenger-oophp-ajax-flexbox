@@ -1,10 +1,9 @@
 <?php
-include "classes/init.php";
 
-if (!isset($_SESSION['user_id'])) {
+    include "classes/init.php";
+    include "security.php";
 
-    header("location:login.php");
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +47,21 @@ if (!isset($_SESSION['user_id'])) {
         <!--close flash-->
     <?php endif; ?>
     <?php unset($_SESSION['name_updated']) ?>
+
+    <!-- Flash message after updating photo-->
+    <?php if (isset($_SESSION['image_updated'])) : ?>
+        <div class="flash success-flash">
+            <span class="remove">&times</span>
+            <div class="flash-heading">
+                <h3><span class="checked">&#10004</span> Success!</h3>
+            </div>
+            <div class="flash-body">
+                <p><?php echo $_SESSION['image_updated'] ?></p>
+            </div>
+        </div>
+        <!--close flash-->
+    <?php endif; ?>
+    <?php unset($_SESSION['image_updated']) ?>
 
 
 
