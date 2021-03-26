@@ -1,5 +1,5 @@
 <?php
-include "classes/init.php";
+include "init.php";
 include "security.php"; //prevents anauthenticated user
 $obj = new base_class();
 

@@ -1,5 +1,5 @@
 <?php
-include "classes/init.php";
+include "init.php";
 include "security.php";
 $obj = new base_class();
 

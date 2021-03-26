@@ -1,5 +1,5 @@
 <?php
-include "classes/init.php";
+include "init.php";
 $obj = new base_class();
 
 if (isset($_SESSION['user_id'])) {

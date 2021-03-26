@@ -1,6 +1,6 @@
 <?php
 
-include "classes/init.php";
+include "init.php";
 $obj = new base_class();
 
 //updating user status to 0 when user logout  
