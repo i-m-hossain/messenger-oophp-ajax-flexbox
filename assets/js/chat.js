@@ -1,5 +1,7 @@
 
 $(document).ready(function () {
+
+    //text message
     
     $(".chat-form").keypress(function(e) {
         if (e.keyCode == 13) {
@@ -15,7 +17,7 @@ $(document).ready(function () {
                         if (response.status == "success") {
 
                             $(".chat-form").trigger("reset"); //after sending message filed should be empty
-                            console.log('msg sent');
+                            alert('msg sent');
                             console.log(response);
                         } 
                         
@@ -62,5 +64,20 @@ $(document).ready(function () {
         }
                 
     });
+    //send emojis
+    $(".emoji-same").click(function () {
+        var emoji = $(this).attr("src");
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/send_emoji.php',
+            data: { 'send_emoji': emoji },
+            dataType: 'JSON',
+            success: function (response) {
+                if (response.status =="success") {
+                    alert(("emoji sent"))
+                }
+            }
+        })
+    })
 
 })
