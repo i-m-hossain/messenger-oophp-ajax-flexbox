@@ -26,30 +26,41 @@ $(document).ready(function () {
             }
         }
     });
-    // $("#upload-files").change(function (e) {
-        
-    //     var file_name = $("#upload-files").val();
-    //     if(file_name.length != ""){
-    //         $.ajax({
-    //             type    : 'POST',
-    //             url     : 'ajax/send_files.php',
-    //             data    : new FormData($(".chat-form")[0]),
-    //             contentType: false,
-    //             procesData: false,
-    //             success : function(response){
-    //                 if (response.status == "success") {
 
-    //                     $(".chatform").trigger("reset"); //after sending message filed should be empty
-    //                     console.log('msg sent');
-    //                     console.log(response);
-    //                 } 
-                    
-    //             }
-    //         });
+    // upload image & files
+    $("#upload-files").change(function () {
+
+        
+        
+        var file_name = $("#upload-files").val();
+        
+        if (file_name.length != "") {
             
-            
-    //     }
+            $.ajax({
+                type    : 'POST',
+                url: 'ajax/send_files.php',
                 
-    // });
+                data    :  new FormData($(".chat-form")[0]), //  0 index means to select  all input fields 
+                contentType: false, // tell jQuery not to set contentType
+                processData: false, // tell jQuery not to process the data
+                dataType: 'JSON',
+                success : function(response){
+                        if (response.status == "error") { //after sending message filed should be empty
+                            $(".files-error").addClass("show-file-error");
+                            $(".files-error").html("<span class='files-cross-icon'>&#x2715</span>" + "Please Choose Valid Image");
+                            setTimeout(function () {
+                                $(".files-error").removeClass("show-file-error");
+                            }, 5000)
+                        }else if(response.status == "success"){
+                            alert("success")
+                        }
+                        
+                    }
+            });
+            
+            
+        }
+                
+    });
 
 })
