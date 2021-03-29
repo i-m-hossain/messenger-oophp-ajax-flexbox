@@ -81,3 +81,18 @@ $(document).ready(function () {
     })
 
 })
+//show messages
+function show_messages() {
+
+    var msg = true;
+    $.ajax({
+        type: 'GET',
+        url: 'ajax/show_messages.php',
+        data: { 'message': msg },
+        success: function (response) {
+            $(".messages").html(response)
+        }
+
+    })
+}
+show_messages();

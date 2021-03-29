@@ -13,6 +13,19 @@
         # php library function:
 
             trim(strip_tags($data))
+
+
+Things Covered:
+
+    1. HTML 5
+    2. CSS 3 (FLEXBOX)
+    3. JavaScript
+    4. JQuery(NavBar Media Query)
+    5. Ajax (Sending message, files , emojis and fetching them)
+    6. OOPHP 
+    7. MySQL(Creating foreign key with cascading delete, inner join)
+
+
             
 
 

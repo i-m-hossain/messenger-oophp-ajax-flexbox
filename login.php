@@ -1,10 +1,11 @@
 <?php
 include "init.php";
+//if a use is already logged n , he will have a $_SESSION['user_id], then we will redirect to home page
 if (isset($_SESSION['user_id'])) {
 
     header("location:index.php");
 }
-
+//Login starts
 $obj = new base_class();
 if (isset($_POST['login'])) {
 
@@ -39,7 +40,9 @@ if (isset($_POST['login'])) {
             $user_email     =   $row->email;
             $user_password  =   $row->password;
             $user_name      =   $row->name;
-            $user_image      =  $row->image;
+            $user_image     =   $row->image;
+            $clean_status   =   $row->clean_status;
+
 
             //if input password does not match
             if (!password_verify($password, $user_password)) {
@@ -49,11 +52,46 @@ if (isset($_POST['login'])) {
                 $status = 1;
                 $query = "UPDATE users SET status=? WHERE id=?";
                 $obj->Normal_Query($query, [$status, $user_id]);
-                $obj->create_session("user_name", $user_name);
-                $obj->create_session('user_id', $user_id);
-                $obj->create_session('user_image', $user_image);
+                
+                if($clean_status == 0){ //if clean_status == 0, it will get the last id of the messages table
 
-                header("location:index.php"); //redirecting to home page
+                    /** == Query for the last id==**/
+                    $query = "SELECT msg_id FROM messages ORDER BY msg_id DESC LIMIT 1";
+                    if($obj->Normal_Query($query)){
+                        $last_row = $obj->single_result();
+                        $last_msg_id = $last_row->msg_id +1;
+
+
+                        /** == Inserting the last message id and the user id associated to clean table==**/
+                        $query = "INSERT INTO clean(clean_message_id, clean_user_id) VALUES (?,?)";
+                        if ($obj->Normal_Query($query, [$last_msg_id, $user_id])) {
+                            
+                            $update_clean_status = 1;
+
+                            /**== updating user table with clean status to 1 ==**/
+                            $query = "UPDATE users SET clean_status=? WHERE id=?";
+                            $obj->Normal_Query($query, [$update_clean_status, $user_id]);
+
+                            /**==Craeting Session==**/
+                            $obj->create_session("user_name", $user_name);
+                            $obj->create_session('user_id', $user_id);
+                            $obj->create_session('user_image', $user_image);
+
+                            header("location:index.php"); //redirecting to home page
+                        }
+
+                    };
+
+                }else{
+                    /**==if clean_status is not zero that means it  has already set up the clean table , 
+                    now only create the sessions ==**/
+                    $obj->create_session("user_name", $user_name);
+                    $obj->create_session('user_id', $user_id);
+                    $obj->create_session('user_image', $user_image);
+
+                    header("location:index.php"); //redirecting to home page
+                }
+                
 
             }
         }
