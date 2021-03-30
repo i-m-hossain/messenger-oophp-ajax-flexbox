@@ -446,6 +446,12 @@ body{
 .word{
     color:  #209ef7
 }
+.send-msg{
+    color: var(--color-green);
+    font-size: 1.5rem;
+    margin-right: 7px ;
+
+}
 .common-images {
     height: 11rem;
     width: auto;
