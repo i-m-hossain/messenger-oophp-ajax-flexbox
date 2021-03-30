@@ -1,6 +1,8 @@
 
 $(document).ready(function () {
 
+    $(".messages").animate({ scrollTop: $(".messages")[0].scrollHeight }, 2000);
+
     //text message
     
     $(".chat-form").keypress(function(e) {
@@ -17,8 +19,8 @@ $(document).ready(function () {
                         if (response.status == "success") {
 
                             $(".chat-form").trigger("reset"); //after sending message filed should be empty
-                            alert('msg sent');
-                            console.log(response);
+                            show_messages();
+                            $(".messages").animate({ scrollTop: $(".messages")[0].scrollHeight }, 2000);
                         } 
                         
                     }
@@ -54,7 +56,8 @@ $(document).ready(function () {
                                 $(".files-error").removeClass("show-file-error");
                             }, 5000)
                         }else if(response.status == "success"){
-                            alert("success")
+                            show_messages();
+                            $(".messages").animate({ scrollTop: $(".messages")[0].scrollHeight }, 2000);
                         }
                         
                     }
@@ -74,13 +77,18 @@ $(document).ready(function () {
             dataType: 'JSON',
             success: function (response) {
                 if (response.status =="success") {
-                    alert(("emoji sent"))
+                    show_messages();
+                    $(".messages").animate({ scrollTop: $(".messages")[0].scrollHeight }, 2000);
                 }
             }
         })
     })
 
 })
+setInterval(function () {
+    show_messages();
+},3000)
+
 //show messages
 function show_messages() {
 
