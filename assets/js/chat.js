@@ -88,7 +88,7 @@ function show_messages() {
     $.ajax({
         type: 'GET',
         url: 'ajax/show_messages.php',
-        data: { 'message': msg },
+        data: { 'message': msg }, 
         success: function (response) {
             $(".messages").html(response)
         }

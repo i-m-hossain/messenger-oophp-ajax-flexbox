@@ -10,7 +10,7 @@ if (isset($_FILES['send_file']['name'])) {
     $file_name = $_FILES['send_file']['name'] ;
     $tmp_name  = $_FILES['send_file']['tmp_name'];
     $store_files = "../assets/chat-uploads/";
-    $extensions = array("jpeg", "jpg", "png", "pdf", "JPG", "zip", "docx", "xlsx");
+    $extensions = array("jpeg", "jpg", "png", "pdf", "JPG", "zip", "docx", "xlsx", "PDF", "PNG", "SVG", "svg");
     $get_file_extension = explode(".", $file_name);
     $get_extension = end($get_file_extension);
 

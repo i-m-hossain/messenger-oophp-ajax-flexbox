@@ -72,7 +72,7 @@ if (isset($_POST['login'])) {
                             $query = "UPDATE users SET clean_status=? WHERE id=?";
                             $obj->Normal_Query($query, [$update_clean_status, $user_id]);
 
-                            /**==Craeting Session==**/
+                            /**==Creating Session==**/
                             $obj->create_session("user_name", $user_name);
                             $obj->create_session('user_id', $user_id);
                             $obj->create_session('user_image', $user_image);

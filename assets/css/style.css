@@ -396,6 +396,10 @@ body{
     display:block;
     text-align: right;
 }
+.right-msg-time{
+    margin-bottom: -1rem;
+    margin-right: 1rem;
+}
 .right-msg{
     width:auto;
     padding: 1rem;
@@ -406,6 +410,49 @@ body{
     border-bottom-left-radius: .5rem;
     border-top-left-radius: .5rem;
     font-size: 1.2rem;
+}
+.right-files {
+    width: auto;
+    padding: 1rem;
+    background-color: var(--color-white);
+    margin-top: .3rem;
+    font-size: 1.2rem;
+}
+.all-files{
+    text-decoration: none;
+    color: var(--color-green);
+}
+.files-common{
+
+    font-size: 2.2rem;
+    margin-right: 1rem;
+
+}
+.pdf{
+    color: var(--color-red)
+}
+.word{
+    color:  #209ef7
+}
+.common-images {
+    height: 11rem;
+    width: auto;
+
+}
+
+.animated-emoji{
+    width:auto;
+    height:auto;
+    animation: emoj 2s infinite;
+}
+@keyframes emoj{
+    50%{
+        transform: rotate(35deg) scale(1.2);
+
+    }
+    100%{
+        transform:rotate(-35deg)
+    }
 }
 
 
