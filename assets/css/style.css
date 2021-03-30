@@ -365,8 +365,20 @@ body{
     margin-top: .3rem;
     position:relative;
     font-size: 1.2rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,.3);
 
 }
+
+.left-files {
+    padding: 1rem;
+    width: auto;
+    background-color: var(--color-white);
+    margin-top: .3rem;
+    position: relative;
+    font-size: 1.2rem;
+
+}
+
  .left-msg::before{
      position: absolute;
      content: '';

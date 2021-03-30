@@ -29,7 +29,7 @@ if(isset($_GET['message'])){
         
         $obj->Normal_Query($query);
         if($obj->Count_Rows() == 0){
-            echo "lets start conversaton to your friends";
+            echo "Lets start conversaton to your friends";
         }else{
             $rows = $obj->fetch_all();
             foreach ($rows as $row) :
@@ -40,6 +40,12 @@ if(isset($_GET['message'])){
                  $msg_type= $row->msg_type;
                  $db_user_id = $row->user_id;
                  $msg_time =$row->msg_time;
+
+                 if($user_status == 0){
+                    $user_offline_style = '<span class="offline-icon"></span>';
+                 }else{
+                    $user_online_style = '<span class="online-icon"></span>';
+                 }
 
                  if($db_user_id == $user_id){
                      //right user messages
@@ -161,7 +167,192 @@ if(isset($_GET['message'])){
                     }
                     
                  }else{
-                     //left user's message
+                    //left user's message
+
+                    if ($msg_type == "text") {
+                        echo '<div class="left-message common-margin">
+                                <div class="sender-img-block">
+                                    <img class="sender-img" src="assets/uploads/'.$user_image.'" alt="sender-img">
+                                    ' .$user_online_style.'
+                                </div>
+                                <div class="left-msg-area">
+                                    <div class="sender-name-date">
+                                        <span class="sender-name">
+                                            '.$full_name.'
+                                        </span> <!-- close user name-->
+                                        <span class="date-time">
+                                            1 minute ago
+                                        </span> <!--close date time -->
+                                    </div> <!-- close user-name-date -->
+                                    <div class="left-msg">
+                                        <p>'.$message.'</p>
+                                    </div> <!-- close left-msg -->
+                                </div><!-- close left message arrea -->
+
+                            </div> <!-- close left message-->';
+                    }else if($msg_type == "jpg" || $msg_type == "JPG" || $msg_type == "JPEG"){
+
+                        echo '<div class="left-message common-margin">
+                                <div class="sender-img-block">
+                                    <img class="sender-img" src="assets/uploads/' . $user_image . '" alt="sender-img">
+                                    ' . $user_online_style . '
+                                </div>
+                                <div class="left-msg-area">
+                                    <div class="sender-name-date">
+                                        <span class="sender-name">
+                                            ' . $full_name . '
+                                        </span> <!-- close user name-->
+                                        <span class="date-time">
+                                            1 minute ago
+                                        </span> <!--close date time -->
+                                    </div> <!-- close user-name-date -->
+                                    <div class="left-files">
+                                        <img src="assets/chat-uploads/' . $message . '" 
+                                                class="common-images">
+                                    </div> <!-- close left-msg -->
+                                </div><!-- close left message arrea -->
+
+                            </div> <!-- close left message-->';
+                    
+                    }else if($msg_type == "png" || $msg_type == "PNG"){
+                        echo '<div class="left-message common-margin">
+                                <div class="sender-img-block">
+                                    <img class="sender-img" src="assets/uploads/' . $user_image . '" alt="sender-img">
+                                    ' . $user_online_style . '
+                                </div>
+                                <div class="left-msg-area">
+                                    <div class="sender-name-date">
+                                        <span class="sender-name">
+                                            ' . $full_name . '
+                                        </span> <!-- close user name-->
+                                        <span class="date-time">
+                                            1 minute ago
+                                        </span> <!--close date time -->
+                                    </div> <!-- close user-name-date -->
+                                    <div class="left-files">
+                                        <img src="assets/chat-uploads/' . $message . '" 
+                                                class="common-images">
+                                    </div> <!-- close left-msg -->
+                                </div><!-- close left message arrea -->
+
+                            </div> <!-- close left message-->';
+                    }else if($msg_type == "ZIP" || $msg_type == "zip"){
+                        echo '<div class="left-message common-margin">
+                                <div class="sender-img-block">
+                                    <img class="sender-img" src="assets/uploads/' . $user_image . '" alt="sender-img">
+                                    ' . $user_online_style . '
+                                </div>
+                                <div class="left-msg-area">
+                                    <div class="sender-name-date">
+                                        <span class="sender-name">
+                                            ' . $full_name . '
+                                        </span> <!-- close user name-->
+                                        <span class="date-time">
+                                            1 minute ago
+                                        </span> <!--close date time -->
+                                    </div> <!-- close user-name-date -->
+                                    <div class="left-files">
+                                        <a href="assets/chat-uploads/' . $message . '" class="all-files">
+                                                <i class="fas fa-arrow-circle-down files-common"></i>' . $message . '
+                                            </a>
+                                    </div> <!-- close left-msg -->
+                                </div><!-- close left message arrea -->
+
+                            </div> <!-- close left message-->';
+                        
+                        
+                    }else if($msg_type == "pdf" || $msg_type == "PDF"){
+                        echo '<div class="left-message common-margin">
+                                <div class="sender-img-block">
+                                    <img class="sender-img" src="assets/uploads/' . $user_image . '" alt="sender-img">
+                                    ' . $user_online_style . '
+                                </div>
+                                <div class="left-msg-area">
+                                    <div class="sender-name-date">
+                                        <span class="sender-name">
+                                            ' . $full_name . '
+                                        </span> <!-- close user name-->
+                                        <span class="date-time">
+                                            1 minute ago
+                                        </span> <!--close date time -->
+                                    </div> <!-- close user-name-date -->
+                                    <div class="left-files">
+                                        <a href="assets/chat-uploads/' . $message . '" class="all-files">
+                                                <i class="far fa-file-pdf pdf files-common"></i>' . $message . '
+                                            </a>
+                                    </div> <!-- close left-msg -->
+                                </div><!-- close left message arrea -->
+
+                            </div> <!-- close left message-->';
+                    } else if ($msg_type == "emoji") {
+                        echo '<div class="left-message common-margin">
+                                <div class="sender-img-block">
+                                    <img class="sender-img" src="assets/uploads/' . $user_image . '" alt="sender-img">
+                                    ' . $user_online_style . '
+                                </div>
+                                <div class="left-msg-area">
+                                    <div class="sender-name-date">
+                                        <span class="sender-name">
+                                            ' . $full_name . '
+                                        </span> <!-- close user name-->
+                                        <span class="date-time">
+                                            1 minute ago
+                                        </span> <!--close date time -->
+                                    </div> <!-- close user-name-date -->
+                                    <div class="left-files">
+                                        <img src="' . $message . '" class="animated-emoji">
+                                    </div> <!-- close left-msg -->
+                                </div><!-- close left message arrea -->
+
+                            </div> <!-- close left message-->';
+
+                    } else if ($msg_type == "docx") {
+                        echo '<div class="left-message common-margin">
+                                <div class="sender-img-block">
+                                    <img class="sender-img" src="assets/uploads/' . $user_image . '" alt="sender-img">
+                                    ' . $user_online_style . '
+                                </div>
+                                <div class="left-msg-area">
+                                    <div class="sender-name-date">
+                                        <span class="sender-name">
+                                            ' . $full_name . '
+                                        </span> <!-- close user name-->
+                                        <span class="date-time">
+                                            1 minute ago
+                                        </span> <!--close date time -->
+                                    </div> <!-- close user-name-date -->
+                                    <div class="left-files">
+                                        <a href="assets/chat-uploads/' . $message . '" class="all-files">
+                                                <i class="far fa-file-word word files-common"></i>' . $message . '
+                                            </a>
+                                    </div> <!-- close left-msg -->
+                                </div><!-- close left message arrea -->
+
+                            </div> <!-- close left message-->';
+                    } else if ($msg_type == "xlsx") {
+                        echo '<div class="left-message common-margin">
+                                <div class="sender-img-block">
+                                    <img class="sender-img" src="assets/uploads/' . $user_image . '" alt="sender-img">
+                                    ' . $user_online_style . '
+                                </div>
+                                <div class="left-msg-area">
+                                    <div class="sender-name-date">
+                                        <span class="sender-name">
+                                            ' . $full_name . '
+                                        </span> <!-- close user name-->
+                                        <span class="date-time">
+                                            1 minute ago
+                                        </span> <!--close date time -->
+                                    </div> <!-- close user-name-date -->
+                                    <div class="left-files">
+                                        <a href="assets/chat-uploads/' . $message . '" class="all-files">
+                                                <i class="far fa-file-excel  files-common"></i>' . $message . '
+                                            </a>
+                                    </div> <!-- close left-msg -->
+                                </div><!-- close left message arrea -->
+
+                            </div> <!-- close left message-->';
+                    }  
 
                  }
             endforeach;
