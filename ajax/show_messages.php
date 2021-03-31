@@ -8,26 +8,28 @@ if(isset($_GET['message'])){
     $user_id = $_SESSION['user_id'];
     $query   = "SELECT clean_message_id FROM clean WHERE clean_user_id = ?";
     if($obj->Normal_Query($query, [$user_id])){ //fetching the corresponding clean_message_id of currently logged in user
-        
-        $row            = $obj->single_result();
-        $last_msg_id    = $row->clean_message_id; //fetched from clean table
+        // if($obj->Count_Rows()> 0){
+            $row            = $obj->single_result();
+            $last_msg_id    = $row->clean_message_id; //fetched from clean table
+
+            
+
+            //fetching the latest msg_id from messages table
+            $query          = "SELECT msg_id FROM messages ORDER BY msg_id DESC LIMIT 1";
+            $obj->Normal_Query($query);
+            $row            =$obj->single_result();
+            $msg_table_last_id   =  $row->msg_id; // fetched from messages table
 
         
 
-        //fetching the latest msg_id from messages table
-        $query          = "SELECT msg_id FROM messages ORDER BY msg_id DESC LIMIT 1";
-        $obj->Normal_Query($query);
-        $row            =$obj->single_result();
-        $msg_table_last_id   =  $row->msg_id; // fetched from messages table
+            //fetching data between clean tables last_msg_id and message tables $msg_table_last_id by inner joining messages and users
+            $query = "SELECT * FROM messages INNER JOIN users ON messages.user_id = users.id 
+                        WHERE messages.msg_id BETWEEN $last_msg_id  AND  $msg_table_last_id 
+                        ORDER BY messages.msg_id ASC";
+            
+            $obj->Normal_Query($query);
+        // }
 
-       
-
-        //fetching data between clean tables last_msg_id and message tables $msg_table_last_id by inner joining messages and users
-        $query = "SELECT * FROM messages INNER JOIN users ON messages.user_id = users.id 
-                    WHERE messages.msg_id BETWEEN $last_msg_id  AND  $msg_table_last_id 
-                    ORDER BY messages.msg_id ASC";
-        
-        $obj->Normal_Query($query);
         if($obj->Count_Rows() == 0){
             echo "Lets start conversaton to your friends";
         }else{

@@ -72,6 +72,66 @@ if (isset($_POST['login'])) {
                             $query = "UPDATE users SET clean_status=? WHERE id=?";
                             $obj->Normal_Query($query, [$update_clean_status, $user_id]);
 
+                            
+                            
+                            /**== User online status ==*/
+                            $login_time = time();
+                            $query = "SELECT * FROM users_activities WHERE user_id=?";
+                            if($obj->Normal_Query($query, [$user_id])){
+
+                                $row = $obj->single_result();
+                                if($row == 0){
+                                    $query = "INSERT INTO users_activities (user_id, login_time) VALUES(?,?)";
+                                    $obj->Normal_Query($query, [$user_id, $login_time]);
+
+                                    /**==Creating Session==**/
+                                    $obj->create_session("user_name", $user_name);
+                                    $obj->create_session('user_id', $user_id);
+                                    $obj->create_session('user_image', $user_image);
+
+                                    header("location:index.php"); //redirecting to home page
+
+                                }else{
+                                    
+                                    $query = "UPDATE users_activities SET login_time=? WHERE user_id=?";
+                                    $obj->Normal_Query($query, [$login_time, $user_id]);
+
+                                    /**==Creating Session==**/
+                                    $obj->create_session("user_name", $user_name);
+                                    $obj->create_session('user_id', $user_id);
+                                    $obj->create_session('user_image', $user_image);
+
+                                    header("location:index.php"); //redirecting to home page
+                                }
+                            } /**== end User online status ==*/                           
+                        }
+
+                    };
+
+                }else{
+
+                    /**== User online status ==*/
+                    $login_time = time();
+                    $query = "SELECT * FROM users_activities WHERE user_id=?";
+                    if ($obj->Normal_Query($query, [$user_id])) {
+
+                        $row = $obj->single_result();
+                        if ($row == 0) {
+                            $query = "INSERT INTO users_activities (user_id, login_time) VALUES(?,?)";
+                            $obj->Normal_Query($query, [$user_id, $login_time]);
+
+                            /**==Creating Session==**/
+                            $obj->create_session("user_name", $user_name);
+                            $obj->create_session('user_id', $user_id);
+                            $obj->create_session('user_image', $user_image);
+
+                            header("location:index.php"); //redirecting to home page
+
+                        } else {
+
+                            $query = "UPDATE users_activities SET login_time=? WHERE user_id=?";
+                            $obj->Normal_Query($query, [$login_time, $user_id]);
+
                             /**==Creating Session==**/
                             $obj->create_session("user_name", $user_name);
                             $obj->create_session('user_id', $user_id);
@@ -79,17 +139,15 @@ if (isset($_POST['login'])) {
 
                             header("location:index.php"); //redirecting to home page
                         }
+                    }
+                    // /**== end User online status ==*/ 
+                    // /**==if clean_status is not zero that means it  has already set up the clean table , 
+                    // now only create the sessions ==**/
+                    // $obj->create_session("user_name", $user_name);
+                    // $obj->create_session('user_id', $user_id);
+                    // $obj->create_session('user_image', $user_image);
 
-                    };
-
-                }else{
-                    /**==if clean_status is not zero that means it  has already set up the clean table , 
-                    now only create the sessions ==**/
-                    $obj->create_session("user_name", $user_name);
-                    $obj->create_session('user_id', $user_id);
-                    $obj->create_session('user_image', $user_image);
-
-                    header("location:index.php"); //redirecting to home page
+                    // header("location:index.php"); //redirecting to home page
                 }
                 
 

@@ -34,8 +34,6 @@ $(document).ready(function () {
     // upload image & files
     $("#upload-files").change(function () {
 
-        
-        
         var file_name = $("#upload-files").val();
         
         if (file_name.length != "") {
@@ -84,10 +82,43 @@ $(document).ready(function () {
         })
     })
 
+    setInterval(function () {
+        show_messages();
+        users_status();
+        online_users();
+    }, 3000);
 })
-setInterval(function () {
-    show_messages();
-},3000)
+
+//Display online users
+
+function online_users(){
+    $.ajax({
+        type: 'GET',
+        url: 'ajax/online_users.php',
+        dataType: 'JSON',
+        success: function(response){
+            $(".online_users").html(response['users']);
+        }
+    })
+}
+
+
+//check users login time
+function users_status() {
+    $.ajax({
+        type: 'GET',
+        url: 'ajax/users_status.php',
+        dataType: 'JSON',
+        success: function (response) {
+            if(response['status'] == "href"){
+               window.location = "login.php";
+            }
+        }
+    })    
+}
+
+
+
 
 //show messages
 function show_messages() {
