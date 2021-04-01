@@ -31,7 +31,7 @@ if(isset($_GET['message'])){
         // }
 
         if($obj->Count_Rows() == 0){
-            echo "Lets start conversaton to your friends";
+            echo "<p class='start_conversation'>Lets start conversation to your friends</p>";
         }else{
             $rows = $obj->fetch_all();
             foreach ($rows as $row) :
@@ -44,7 +44,7 @@ if(isset($_GET['message'])){
                  $msg_time =$obj->time_ago($row->msg_time);
 
                  if($user_status == 0){
-                    $user_offline_style = '<span class="offline-icon"></span>';
+                    $user_online_style = '<span class="offline-icon"></span>';
                  }else{
                     $user_online_style = '<span class="online-icon"></span>';
                  }
@@ -98,7 +98,9 @@ if(isset($_GET['message'])){
                                         </span>
                                         <!--close date time -->
                                         <div class="right-files ">
-                                           <a href="assets/chat-uploads/'.$message. '" class="all-files">
+                                           <a href="assets/chat-uploads/'.$message. '" 
+                                                class="all-files"
+                                                target="_blank">
                                                 <i class="far fa-file-pdf pdf files-common"></i>'.$message.'
                                             </a>
                                         </div> 
@@ -173,9 +175,10 @@ if(isset($_GET['message'])){
                     if ($msg_type == "text") {
                         echo '<div class="left-message common-margin">
                                 <div class="sender-img-block">
-                                    <img class="sender-img" src="assets/uploads/'.$user_image.'" alt="sender-img">
-                                    ' .$user_online_style.'
-                                </div>
+                                    <img class="sender-img" src="assets/uploads/'.$user_image. '" alt="sender-img">'
+                                    .$user_online_style.
+                                    
+                                '</div>
                                 <div class="left-msg-area">
                                     <div class="sender-name-date">
                                         <span class="sender-name">
@@ -278,7 +281,9 @@ if(isset($_GET['message'])){
                                         </span> <!--close date time -->
                                     </div> <!-- close user-name-date -->
                                     <div class="left-files">
-                                        <a href="assets/chat-uploads/' . $message . '" class="all-files">
+                                        <a href="assets/chat-uploads/' . $message . '" 
+                                                class="all-files"
+                                                target="_blank">
                                                 <i class="far fa-file-pdf pdf files-common"></i>' . $message . '
                                             </a>
                                     </div> <!-- close left-msg -->

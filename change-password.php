@@ -88,8 +88,7 @@ if (isset($_POST['change_password'])) {
                     <h2 class="form-heading ">Change Password</h2>
                 </div>
                 <div class="group">
-                    <input class="control" type="password" name="current_password" value="<?php if (isset($current_password)) : echo $_POST['current_password'];
-                                                                                            endif; ?>" placeholder="Current password">
+                    <input class="control" type="password" name="current_password"  placeholder="Current password">
                     <div class="error">
                         <?php if (isset($current_password_error)) : ?>
                             <?php echo $current_password_error ?>
@@ -97,8 +96,7 @@ if (isset($_POST['change_password'])) {
                     </div>
                 </div>
                 <div class="group">
-                    <input class="control" type="password" name="new_password" value="<?php if (isset($new_password)) : echo $_POST['new_password'];
-                                                                                        endif; ?>" placeholder="Create new password">
+                    <input class="control" type="password" name="new_password"  placeholder="Create new password">
                     <div class="error">
                         <?php if (isset($new_password_error)) : ?>
                             <?php echo $new_password_error ?>
@@ -106,8 +104,7 @@ if (isset($_POST['change_password'])) {
                     </div>
                 </div>
                 <div class="group">
-                    <input class="control" type="password" name="retype_password" value="<?php if (isset($retype_password)) : echo $_POST['retype_password'];
-                                                                                            endif; ?>" placeholder="Confirm new password">
+                    <input class="control" type="password" name="retype_password"  placeholder="Confirm new password">
                     <div class="error">
                         <?php if (isset($retype_password_error)) : ?>
                             <?php echo $retype_password_error ?>

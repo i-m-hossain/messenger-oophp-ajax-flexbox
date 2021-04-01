@@ -1,7 +1,12 @@
 <?php
 
     include "init.php";
-    include "security.php";
+    if (!isset($_SESSION['user_id'])) {
+
+        header("location:login.php");
+    }
+
+
 
 
 ?>

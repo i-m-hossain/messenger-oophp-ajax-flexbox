@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
 
-    $(".messages").animate({ scrollTop: $(".messages")[0].scrollHeight }, 2000);
+   
 
     //text message
     
@@ -150,3 +150,7 @@ function show_messages() {
     })
 }
 show_messages();
+
+
+//automatic scroll to the bottom when the page is load
+ $(".messages").animate({ scrollTop: $(".messages")[0].scrollHeight }, 2000);
