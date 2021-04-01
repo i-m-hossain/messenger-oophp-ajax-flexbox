@@ -97,6 +97,8 @@ $(document).ready(function () {
         })
     })
 
+    online_users();
+
     setInterval(function () {
         show_messages();
         users_status();
@@ -111,8 +113,14 @@ function online_users(){
         type: 'GET',
         url: 'ajax/online_users.php',
         dataType: 'JSON',
-        success: function(response){
-            $(".online_users").html(response['users']);
+        success: function (response) {
+            if (response.users == 1) {
+                $(".online_users").html("<span class='show-online'></span>" + "Only you");
+            } else {
+                $(".online_users").html("<span class='show-online'></span> Online Users:" + response.users);
+
+            }
+            
         }
     })
 }

@@ -35,9 +35,11 @@ class base_class extends db{
 
     }
     public function time_ago($db_msg_time){
-
-        $db_time = strtotime($db_msg_time);
+       
+       
         date_default_timezone_set("Asia/Dhaka");
+        $db_time = strtotime($db_msg_time);
+        
         $current_time = time();
 
         $seconds = $current_time - $db_time;

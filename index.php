@@ -5,10 +5,6 @@
 
         header("location:login.php");
     }
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +19,18 @@
 </head>
 
 <body>
+    <?php if(isset($_SESSION['loader'])):?>
+        <div class="loader-area">
+            <div class="loader">
+                <div class="loader-item">
+
+                </div>
+            </div><!--close loader -->
+        </div> <!-- close loader area-->
+    <?php endif; ?>
+    <?php unset($_SESSION['loader']); ?>
+    
+    
     <!-- Flash message after changing password-->
     <?php if (isset($_SESSION['password_updated'])) : ?>
         <div class="flash success-flash">
@@ -100,6 +108,15 @@
     </div>
     <!--close chat-container -->
     <?php include "components/js.php" ?>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $(".loader-area").show();
+            setTimeout(function(){
+                $(".loader-area").hide();
+            }, 3000);
+        })
+    </script>
 
 
 </body>

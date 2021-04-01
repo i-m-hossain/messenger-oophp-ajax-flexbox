@@ -88,6 +88,7 @@ if (isset($_POST['login'])) {
                                     $obj->create_session("user_name", $user_name);
                                     $obj->create_session('user_id', $user_id);
                                     $obj->create_session('user_image', $user_image);
+                                    $obj->create_session('loader', 1);
 
                                     header("location:index.php"); //redirecting to home page
 
@@ -100,6 +101,7 @@ if (isset($_POST['login'])) {
                                     $obj->create_session("user_name", $user_name);
                                     $obj->create_session('user_id', $user_id);
                                     $obj->create_session('user_image', $user_image);
+                                    $obj->create_session('loader', 1);
 
                                     header("location:index.php"); //redirecting to home page
                                 }
@@ -124,6 +126,7 @@ if (isset($_POST['login'])) {
                             $obj->create_session("user_name", $user_name);
                             $obj->create_session('user_id', $user_id);
                             $obj->create_session('user_image', $user_image);
+                            $obj->create_session('loader', 1);
 
                             header("location:index.php"); //redirecting to home page
 
@@ -136,6 +139,7 @@ if (isset($_POST['login'])) {
                             $obj->create_session("user_name", $user_name);
                             $obj->create_session('user_id', $user_id);
                             $obj->create_session('user_image', $user_image);
+                            $obj->create_session('loader', 1);
 
                             header("location:index.php"); //redirecting to home page
                         }
